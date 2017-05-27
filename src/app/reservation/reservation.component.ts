@@ -1,35 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { ReservationDataService } from '../services/reservation-data.service';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+
 
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
-  styleUrls: ['./reservation.component.css']
+  styleUrls: ['./reservation.component.css'],
+  providers: [ReservationDataService]
 })
 export class ReservationComponent implements OnInit {
 
-  private seats = [];
-  private bookedSeats = [1, 22, 47];
   private selectedSeats = [];
+  private seats: FirebaseListObservable<any>;
+  private seatsArray = [];
 
-  constructor() { }
+  constructor(private reservationDataService: ReservationDataService, private db: AngularFireDatabase) {   }
 
   ngOnInit() {
-    const seatRows = ['A', 'B', 'C', 'D'];
-    for (let i = 0; i < 48; i++) {
-      const seatName = seatRows[i % 4] + Math.floor(i / 4 + 1);
-      const seatData = {
-        id: i,
-        available: true,
-        selected: false,
-        seatName: seatName
-      };
-      this.bookedSeats.forEach(seat => {
-        if (seat === i) {
-          seatData.available = false;
-        }
-      });
-      this.seats.push(seatData);
-    }
+    this.seats = this.db.list('/seats');
+    this.seats.subscribe(seats => {
+      this.seatsArray = seats;
+    });
   }
 
   selectSeat(seat) {
@@ -41,6 +33,23 @@ export class ReservationComponent implements OnInit {
       this.selectedSeats.push(seat);
     }
     seat.selected = !seat.selected;
+  }
+
+  save() {
+    this.selectedSeats.forEach(selectedSeat => {
+      selectedSeat.available = false;
+      selectedSeat.selected = false;
+      this.seats.update(selectedSeat.$key, selectedSeat);
+    });
+    this.selectedSeats = [];
+  }
+
+  reset() {
+    this.seatsArray.forEach(seat => {
+      seat.available = true;
+      seat.selected = false;
+      this.seats.update(seat.$key, seat);
+    });
   }
 
 }

@@ -1,5 +1,29 @@
 <nav class="navbar fixed-top navbar-inverse bg-inverse bg-faded">
   <div class="container">
     <a class="navbar-brand" href="#">Movie Seat Reservation</a>
+
+    <div class="float-right" *ngIf="(user | async)">
+       <img src="{{ (user | async)?.photoURL }}" class="rounded" height="35px">
+      <span class="navbar-brand"> {{ (user | async)?.displayName }}</span>
+      <button class="btn btn-outline-secondary" (click)="logout()">Logout</button>
+    </div>
+
+    <div class="float-right" *ngIf="!(user | async)">
+      <span class="navbar-brand">Login</span>
+      <div class="btn-group btn-group-sm" role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary" (click)="login('GoogleAuthProvider')">
+              <img src="https://www.gstatic.com/mobilesdk/160512_mobilesdk/auth_service_google.svg">
+              </button>
+        <button type="button" class="btn btn-secondary" (click)="login('FacebookAuthProvider')">
+              <img src="https://www.gstatic.com/mobilesdk/160409_mobilesdk/images/auth_service_facebook.svg">
+            </button>
+        <button type="button" class="btn btn-secondary" (click)="login('TwitterAuthProvider')">
+              <img src="https://www.gstatic.com/mobilesdk/160409_mobilesdk/images/auth_service_twitter.svg">
+            </button>
+        <button type="button" class="btn btn-secondary" (click)="login('GithubAuthProvider')">
+              <img src="https://www.gstatic.com/mobilesdk/160409_mobilesdk/images/auth_service_github.svg">
+            </button>
+      </div>
+    </div>
   </div>
 </nav>

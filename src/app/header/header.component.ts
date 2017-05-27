@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  user: Observable<firebase.User>;
 
   ngOnInit() {
+  }
+
+  constructor(public afAuth: AngularFireAuth) {
+    this.user = afAuth.authState;
+  }
+
+  login(authProvider) {
+    this.afAuth.auth.signInWithPopup(new firebase.auth[authProvider]()).
+      then(res => console.log(res));
+  }
+
+  logout() {
+    const providers = [firebase.auth.EmailAuthProvider, firebase.auth.FacebookAuthProvider, firebase.auth.GithubAuthProvider,
+    firebase.auth.GoogleAuthProvider, firebase.auth.TwitterAuthProvider];
+    this.afAuth.auth.signOut();
   }
 
 }
