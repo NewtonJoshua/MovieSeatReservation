@@ -1,0 +1,17 @@
+.reservation {
+  margin-top: 80px;
+}
+
+.card-columns {
+  column-count: 12;
+}
+
+.available {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.booked {
+  pointer-events: none;
+  cursor: default;
+}
