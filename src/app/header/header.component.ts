@@ -6,17 +6,17 @@ import * as firebase from 'firebase/app';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
 
   user: Observable<firebase.User>;
 
-  ngOnInit() {
+  constructor(public afAuth: AngularFireAuth ) {
+    this.user = afAuth.authState;
   }
 
-  constructor(public afAuth: AngularFireAuth) {
-    this.user = afAuth.authState;
+  ngOnInit() {
   }
 
   login(authProvider) {

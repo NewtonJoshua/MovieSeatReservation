@@ -12,6 +12,11 @@
 }
 
 .booked {
-  pointer-events: none;
   cursor: default;
+  pointer-events: none;
+}
+
+.seatArea {
+  height: 170px;
+  margin: 50px 45% 0 45%;
 }

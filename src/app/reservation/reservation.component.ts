@@ -13,14 +13,14 @@ export class ReservationComponent implements OnInit {
 
   private selectedSeats = [];
   private seats: FirebaseListObservable<any>;
-  private seatsArray = [];
+  private seatsAarray = [];
 
-  constructor(private reservationDataService: ReservationDataService, private db: AngularFireDatabase) {   }
+  constructor(private reservationDataService: ReservationDataService, private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.seats = this.db.list('/seats');
     this.seats.subscribe(seats => {
-      this.seatsArray = seats;
+      this.seatsAarray = seats;
     });
   }
 
@@ -33,6 +33,7 @@ export class ReservationComponent implements OnInit {
       this.selectedSeats.push(seat);
     }
     seat.selected = !seat.selected;
+    this.seats.update(seat.$key, seat);
   }
 
   save() {
@@ -45,11 +46,12 @@ export class ReservationComponent implements OnInit {
   }
 
   reset() {
-    this.seatsArray.forEach(seat => {
+    this.seatsAarray.forEach(seat => {
       seat.available = true;
       seat.selected = false;
       this.seats.update(seat.$key, seat);
     });
+    this.selectedSeats = [];
   }
 
 }

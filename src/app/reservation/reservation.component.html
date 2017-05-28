@@ -4,18 +4,21 @@
       <h6 class="text-muted">Pick your seat(s)</h6>
     </div>
     <div class="card-block">
-      <div class="card-columns">
-        <div class="card card-{{ seat.available ?  'success available' : 'danger booked'}} {{ seat.selected ?  'card-warning' : ''}} card-inverse text-center"
+      <div class="card-columns" *ngIf="seats | async">
+        <div class="card card-{{ seat.available ?  'success available' : 'danger booked'}} {{ seat.selected ?  'card-warning' : ' '}} card-inverse text-center"
           *ngFor="let seat of seats  | async" (click)="selectSeat(seat)">
           {{seat.seatName}}
         </div>
+      </div>
+      <div class="seatArea align-middle" *ngIf="!(seats | async)">
+        <div class="loader"></div>
       </div>
     </div>
     <div class="card-footer text-muted">
       You reserved {{selectedSeats.length}} seat(s): <span *ngFor="let seat of selectedSeats">{{seat.seatName}} </span>
       <div class="float-right">
-        <button type="button" class="btn btn-danger" (click)="reset()">Reset Application</button>
-        <button type="button" class="btn btn-primary" (click)="save()">Confirm reservation</button>
+        <button type="button" class="btn btn-danger" (click)="reset()" [disabled]="!(seats | async)">Reset Application</button>
+        <button type="button" class="btn btn-primary" (click)="save()" [disabled]="selectedSeats.length === 0">Confirm reservation</button>
       </div>
     </div>
   </div>

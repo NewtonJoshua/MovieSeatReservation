@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ReservationDataService {
+
+  user: Observable<any> =  Observable.create();
 
   constructor() { }
 
