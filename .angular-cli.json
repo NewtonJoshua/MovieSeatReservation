@@ -9,7 +9,11 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "docs",
+        "docs/globals.html",
+        "docs/lighthouse-results.html",
+        "service-worker.js"
       ],
       "index": "index.html",
       "main": "main.ts",
