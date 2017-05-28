@@ -16,11 +16,6 @@ export class ToastService {
       theme: 'bootstrap'
     };
      this.toastyService[data.type](toastOptions);
-    // this.toastyService.info(toastOptions);
-    // this.toastyService.success(toastOptions);
-    // this.toastyService.wait(toastOptions);
-    // this.toastyService.error(toastOptions);
-    // this.toastyService.warning(toastOptions);
   }
 
 
