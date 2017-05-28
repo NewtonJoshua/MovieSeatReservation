@@ -65,7 +65,7 @@ TypeDoc, a documentation generator is used to generate the documentation for thi
 
 Take a look at the latest documentation generated as a step in the continuous integeration is given below,
 
-https://MovieSeatReservation.newtonjoshua.com/docs/globals.html
+https://reservemovie.newtonjoshua.com/docs/globals.html
 
 Refer [TypeDoc Documentation](http://typedoc.org/guides/usage/).
 
