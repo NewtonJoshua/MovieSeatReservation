@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ReservationDataService } from '../services/reservation-data.service';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css'],
-  providers: [ReservationDataService]
+  providers: [ToastService]
 })
 export class ReservationComponent implements OnInit {
 
@@ -15,7 +14,7 @@ export class ReservationComponent implements OnInit {
   private seats: FirebaseListObservable<any>;
   private seatsAarray = [];
 
-  constructor(private reservationDataService: ReservationDataService, private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private toastService: ToastService) { }
 
   ngOnInit() {
     this.seats = this.db.list('/seats');
@@ -43,6 +42,11 @@ export class ReservationComponent implements OnInit {
       this.seats.update(selectedSeat.$key, selectedSeat);
     });
     this.selectedSeats = [];
+    this.toastService.toast({
+      type: 'success',
+      title: 'Seat(s) reserved',
+      msg: 'Hi, The selected seats are reserved for you.'
+    });
   }
 
   reset() {
@@ -52,6 +56,11 @@ export class ReservationComponent implements OnInit {
       this.seats.update(seat.$key, seat);
     });
     this.selectedSeats = [];
+    this.toastService.toast({
+      type: 'info',
+      title: 'App reset',
+      msg: 'Hi, The application is reset and all the seats are available now.'
+    });
   }
 
 }

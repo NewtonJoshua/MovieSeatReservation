@@ -6,6 +6,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import {ToastyModule} from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,7 +26,8 @@ import { ReservationComponent } from './reservation/reservation.component';
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+     ToastyModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
