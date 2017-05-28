@@ -1,6 +1,9 @@
 <nav class="navbar fixed-top navbar-inverse bg-inverse bg-faded">
   <div class="container">
-    <a class="navbar-brand" href="#">Movie Seat Reservation</a>
+    <a class="navbar-brand" target="_blank" href="https://travis-ci.org/NewtonJoshua/MovieSeatReservation">
+          <img src="assets/images/icon.png" height="35" alt="">
+          Movie Seat Reservation
+    </a>
 
     <div class="float-right" *ngIf="(user | async)">
        <img src="{{ (user | async)?.photoURL }}" class="rounded" height="35px">

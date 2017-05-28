@@ -1,0 +1,15 @@
+{
+  "short_name": "Reservation",
+  "name": "Movie Ticket Reservation",
+  "icons": [
+    {
+      "src":"assets/images/icon.png",
+      "sizes": "1600x1600",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#000",
+  "theme_color": "#333",
+  "display": "standalone"
+}

@@ -1,4 +1,8 @@
-<nav class="navbar navbar-inverse bg-inverse bg-faded">
+<nav class="navbar navbar-inverse fixed-bottom bg-inverse bg-faded text-center toggle" *ngIf="!showDevView" (click)="toggleView()">
+  <h6 class="text-muted">Click to view Development details</h6>
+</nav>
+
+<nav class="navbar navbar-inverse bg-inverse bg-faded" *ngIf="showDevView">
   <div class="container">
     <div class="row">
       <div class="col col-md-8">
@@ -37,7 +41,8 @@
         <a target="_blank" href="docs/globals.html" title="Documentation"><img src="https://img.shields.io/badge/documentation-latest-brightgreen.svg" rel="noopener" /></a>
         <a target="_blank" href="docs/lighthouse-results.html" title="Documentation"><img src="https://img.shields.io/badge/quality-tested-brightgreen.svg" rel="noopener" /></a>
         <br>
-
+        <br>
+        <button class="btn btn-outline-secondary" (click)="toggleView()">Hide Develeopment details</button>
       </div>
       <div class="col-md-4">
         <h6 class="text-muted">Developed By</h6>
@@ -45,8 +50,7 @@
         <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark"
           data-vanity="newtonjoshuaa"><a class="LI-simple-link" href='https://in.linkedin.com/in/newtonjoshuaa'>Newton Joshua</a></div>
 
-        <a href="https://www.facebook.com/NewtonJoshua.A" title="Newton Joshua" target="_TOP"><img class="img" src="https://badge.facebook.com/badge/100000425370764.3330.383774049.png" style="border: 0px;" alt=""
-          /></a>
+        <a href="https://www.facebook.com/NewtonJoshua.A" title="Newton Joshua" target="_TOP"><img class="img" src="https://badge.facebook.com/badge/100000425370764.3330.383774049.png" style="border: 0px;" alt=""></a>
 
         <a href="https://stackoverflow.com/users/6778969/newton-joshua">
           <img src="https://stackoverflow.com/users/flair/6778969.png?theme=dark" width="208" height="58" alt="profile for Newton Joshua at Stack Overflow, Q&amp;A for professional and enthusiast programmers"

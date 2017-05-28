@@ -13,7 +13,8 @@
         "docs",
         "docs/globals.html",
         "docs/lighthouse-results.html",
-        "service-worker.js"
+        "service-worker.js",
+        "manifest.json"
       ],
       "index": "index.html",
       "main": "main.ts",
