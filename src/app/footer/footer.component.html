@@ -1,45 +1,45 @@
-<nav class="navbar navbar-inverse fixed-bottom bg-inverse bg-faded text-center toggle" *ngIf="!showDevView" (click)="toggleView()">
+<nav class="navbar navbar-inverse fixed-bottom bg-inverse bg-faded text-center toggle" [hidden]="showDevView" (click)="toggleView()">
   <h6 class="text-muted">Click to view Development details</h6>
 </nav>
 
-<nav class="navbar navbar-inverse bg-inverse bg-faded" *ngIf="showDevView">
+<nav class="navbar navbar-inverse bg-inverse bg-faded" [hidden]="!showDevView">
   <div class="container">
     <div class="row">
       <div class="col col-md-8">
         <h6 class="text-muted">Developed Using</h6>
-        <a class="navbar-brand" target="_blank" href="https://angular.io/">
+        <a class="navbar-brand" target="_blank" href="https://angular.io/" rel="noopener">
           <img src="/assets/images/angular.png" height="35" alt="">
           <small>4</small>
         </a>
-        <a class="navbar-brand" target="_blank" href="https://firebase.google.com/">
+        <a class="navbar-brand" target="_blank" href="https://firebase.google.com/" rel="noopener">
           <img src="assets/images/firebase.png" height="35" alt="">
         </a>
-        <a class="navbar-brand" target="_blank" href="https://v4-alpha.getbootstrap.com/">
+        <a class="navbar-brand" target="_blank" href="https://v4-alpha.getbootstrap.com/" rel="noopener">
           <img src="assets/images/bootstrap-solid.svg" height="35" alt="">
           <small>4</small>
         </a>
-        <a class="navbar-brand" target="_blank" href="https://travis-ci.org/NewtonJoshua/MovieSeatReservation">
+        <a class="navbar-brand" target="_blank" href="https://travis-ci.org/NewtonJoshua/MovieSeatReservation" rel="noopener">
           <img src="assets/images/TravisCI.png" height="35" alt="">
         </a>
-        <a class="navbar-brand" target="_blank" href="https://github.com/NewtonJoshua/MovieSeatReservation">
+        <a class="navbar-brand" target="_blank" href="https://github.com/NewtonJoshua/MovieSeatReservation" rel="noopener">
           <img src="assets/images/Octocat.png" height="35" alt="">
           <img src="assets/images/GitHub_Logo.png" height="35" alt="">
         </a>
-        <a class="navbar-brand" target="_blank" href="docs/globals.html">
+        <a class="navbar-brand" target="_blank" href="docs/globals.html" rel="noopener">
           <img src="assets/images/typedoc.png" height="35" alt="">
           <small>Typedoc</small>
         </a>
-        <a class="navbar-brand" target="_blank" href="docs/lighthouse-results.html">
+        <a class="navbar-brand" target="_blank" href="docs/lighthouse-results.html" rel="noopener">
           <img src="assets/images/pwa-lighthouse.png" height="35" alt="">
           <small>Lighthouse</small>
         </a>
 
         <h6 class="text-muted">Development Status</h6>
-        <a target="_blank" href="https://david-dm.org/NewtonJoshua/MovieSeatReservation" title="dependencies status"><img src="https://david-dm.org/NewtonJoshua/MovieSeatReservation/status.png" rel="noopener" /></a>
         <a target="_blank" href="https://travis-ci.org/NewtonJoshua/MovieSeatReservation" title="Continuous Integeration"><img src="https://travis-ci.org/NewtonJoshua/MovieSeatReservation.svg?branch=master" rel="noopener" /></a>
         <a target="_blank" href="https://github.com/NewtonJoshua/MovieSeatReservation/blob/master/README.md" title="Readme"><img src="https://img.shields.io/badge/readme-latest-brightgreen.svg" rel="noopener" /></a>
+        <a target="_blank" href="https://david-dm.org/NewtonJoshua/MovieSeatReservation" title="dependencies status"><img src="https://david-dm.org/NewtonJoshua/MovieSeatReservation/status.png" rel="noopener" /></a>
         <a target="_blank" href="docs/globals.html" title="Documentation"><img src="https://img.shields.io/badge/documentation-latest-brightgreen.svg" rel="noopener" /></a>
-        <a target="_blank" href="docs/lighthouse-results.html" title="Documentation"><img src="https://img.shields.io/badge/quality-tested-brightgreen.svg" rel="noopener" /></a>
+        <a target="_blank" href="docs/lighthouse-results.html" title="Documentation"><img src="https://img.shields.io/badge/progressiveWebApp-true-brightgreen.svg" rel="noopener" /></a>
         <br>
         <br>
         <button class="btn btn-outline-secondary" (click)="toggleView()">Hide Develeopment details</button>
